@@ -1,9 +1,9 @@
+import os
 import gradio as gr
 from TTS.api import TTS
 
 tts = TTS("tts_models/multilingual/multi-dataset/xtts_v1")
-tts.to("cuda")
-
+tts.to(os.environ.get("HARDWARE_MODE", "cpu"))
 
 def predict(prompt, language, audio_file_pth, agree):
     if agree == True:

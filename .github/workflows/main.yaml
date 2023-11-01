@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       -
         name: Checkout
@@ -28,4 +28,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/xtts-hf:${{github.ref_name}},${{ secrets.DOCKERHUB_USERNAME }}/xtts-hf:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/xtts-hf:${{github.ref_name}}

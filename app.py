@@ -99,7 +99,7 @@ gr.Interface(
         ),
         gr.Audio(
             label="Reference Audio",
-            info="Click on the ✎ button to upload your own target speaker audio",
+            # info="Click on the ✎ button to upload your own target speaker audio",
             type="filepath",
             value="examples/female.wav",
         ),
@@ -117,4 +117,7 @@ gr.Interface(
     description=description,
     article=article,
     examples=examples,
-).queue().launch(debug=True)
+).queue().launch(
+    server_name=os.environ.get("SERVER_NAME", "0.0.0.0"),
+    server_port=int(os.environ.get("SERVER_PORT", "7860"))
+)
